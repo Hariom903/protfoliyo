@@ -1,8 +1,8 @@
 <?php 
-$host = "localhost";
-$username = "root";
-$password = null;
-$db = "portfolio";
+$host = "sql106.infinityfree.com";
+$username = "if0_38979202";
+$password ='TOLtzTmzLKWDGMf';
+$db = "if0_38979202_portfolio";
 
 $conn = new mysqli($host, $username, $password, $db);
 
@@ -10,7 +10,8 @@ if ($conn->connect_error) {
    dir("db connect errer " . $conn->connect_error);
 }
 
-if(isset($_POST)){
+if(isset($_POST) &&!empty($_POST['name']) &&!empty($_POST['email']) &&!empty($_POST['message']) &&!empty($_POST['phone'])){
+
  $name = $_POST['name'];
   $email = $_POST['email'];
   $message = $_POST['message'];
@@ -21,8 +22,7 @@ if(isset($_POST)){
   if($res){
     echo " <script>
      
-       alert('  From submit successfluy ');
-        window.location.href = '/Portfolio-Website';
+        window.location.href = 'https://hariom.ct.ws/';
     </script>";
   }
 }
