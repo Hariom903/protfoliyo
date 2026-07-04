@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --text-main: #333333;
+    --text-muted: #555555;
+    --primary: #2563eb;
+    --bg-page: #f4f4f5;
+    --bg-paper: #ffffff;
+    --border-color: #d4d4d8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-page);
+    font-family: 'Inter', Helvetica, Arial, sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.resume-container {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Actions */
+.resume-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-outline {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-outline:hover {
+    background-color: #f4f4f5;
+}
+
+/* Document */
+.resume-document {
+    background: var(--bg-paper);
+    padding: 60px 80px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border-color);
+}
+
+.resume-header {
+    text-align: center;
+    border-bottom: 2px solid var(--text-main);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.resume-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.resume-header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.contact-info {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.contact-info span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Sections */
+.resume-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+.summary-text {
+    text-align: justify;
+}
+
+.skills-list {
+    list-style: none;
+}
+
+.skills-list li {
+    margin-bottom: 6px;
+}
+
+.skills-list strong {
+    display: inline-block;
+    width: 150px;
+    color: var(--text-main);
+}
+
+/* Items (Experience & Education) */
+.experience-item, .education-item, .cert-item {
+    margin-bottom: 20px;
+}
+
+.experience-item:last-child, .education-item:last-child {
+    margin-bottom: 0;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.job-title, .degree, .cert-name {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.company-name, .school, .cert-issuer {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-style: italic;
+    display: block;
+}
+
+.item-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.experience-details {
+    padding-left: 20px;
+}
+
+.experience-details li {
+    margin-bottom: 5px;
+    text-align: justify;
+}
+
+/* Print Styles for ATS / PDF */
+@media print {
+    body {
+        background: none;
+        font-size: 12px;
+    }
+    .resume-container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    .resume-document {
+        padding: 0;
+        box-shadow: none;
+        border: none;
+    }
+    .no-print {
+        display: none !important;
+    }
+    .skills-list strong {
+        width: 120px;
+    }
+}
