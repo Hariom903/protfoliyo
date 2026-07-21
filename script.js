@@ -1,68 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ===== THEME TOGGLE =====
-    const themeToggle = document.getElementById('theme-toggle');
-    const toggleIcon = themeToggle ? themeToggle.querySelector('i') : null;
     
-    // Check local storage for theme
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    if (currentTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        if(toggleIcon) {
-            toggleIcon.classList.remove('fa-moon');
-            toggleIcon.classList.add('fa-sun');
-        }
-    }
-    
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            let theme = document.documentElement.getAttribute('data-theme');
-            if (theme === 'dark') {
-                document.documentElement.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-                toggleIcon.classList.remove('fa-sun');
-                toggleIcon.classList.add('fa-moon');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-                toggleIcon.classList.remove('fa-moon');
-                toggleIcon.classList.add('fa-sun');
-            }
-        });
-    }
-
     // ===== PRELOADER =====
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if(preloader) {
-            preloader.classList.add('fade-out');
-            setTimeout(() => { preloader.style.display = 'none'; }, 600);
-        }
-    });
+    const preloader = document.getElementById('preloader');
+    if(preloader) {
+        setTimeout(() => { 
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 800);
+    }
 
-    // ===== HEADER & SCROLL TOP =====
-    const header = document.querySelector('header');
+    // ===== HEADER & SCROLL LOGIC =====
+    const header = document.getElementById('header');
     const scrollTopBtn = document.getElementById('scroll-top');
-    
+    const progressBar = document.getElementById('scroll-progress');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar a');
+
     window.addEventListener('scroll', () => {
+        // Scroll Progress Bar
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        if(progressBar) progressBar.style.width = scrolled + "%";
+
+        // Header Style
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
-            scrollTopBtn.classList.add('active');
         } else {
             header.classList.remove('scrolled');
+        }
+
+        // Scroll to top button
+        if (window.scrollY > 500) {
+            scrollTopBtn.classList.add('active');
+        } else {
             scrollTopBtn.classList.remove('active');
         }
         
-        // Active Nav Link
+        // Active Nav Link mapping
         let current = '';
-        const sections = document.querySelectorAll('section');
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 100) {
+            if (window.scrollY >= sectionTop - 150) {
                 current = section.getAttribute('id');
             }
         });
         
-        document.querySelectorAll('.navbar a').forEach(a => {
+        navLinks.forEach(a => {
             a.classList.remove('active');
             if (a.getAttribute('href').includes(current)) {
                 a.classList.add('active');
@@ -70,195 +56,188 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // ===== MOBILE MENU =====
+    const menuBtn = document.getElementById('menu');
+    const navbar = document.getElementById('navbar');
+    
+    if(menuBtn && navbar) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        });
 
-    // ===== CONTACT FORM API INTEGRATION =====
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = contactForm.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            btn.disabled = true;
-
-            const formData = {
-                name: contactForm.querySelector('[name="name"]').value,
-                email: contactForm.querySelector('[name="email"]').value,
-                phone: contactForm.querySelector('[name="phone"]').value,
-                message: contactForm.querySelector('[name="message"]').value
-            };
-
-            try {
-                const response = await fetch('http://localhost:3000/api/messages', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                
-                if (response.ok) {
-                    alert('Message sent successfully!');
-                    contactForm.reset();
-                } else {
-                    alert('Failed to send message. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Server error. Ensure the backend is running.');
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
+        // Close menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('fa-times');
+                navbar.classList.remove('active');
+            });
         });
     }
 
-    // ===== MOBILE MENU =====
-    const menuBtn = document.getElementById('menu');
-    const navbar = document.querySelector('.navbar');
+    // ===== CUSTOM CURSOR =====
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorGlow = document.getElementById('cursor-glow');
     
-    menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('fa-times');
-        navbar.classList.toggle('active');
-    });
+    if(cursorDot && cursorGlow) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            // Fast follow for dot
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            // Slow follow for glow
+            cursorGlow.style.left = `${posX}px`;
+            cursorGlow.style.top = `${posY}px`;
+        });
 
-    window.addEventListener('scroll', () => {
-        menuBtn.classList.remove('fa-times');
-        navbar.classList.remove('active');
-    });
+        // Add hover effect on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .project-card, .glass-panel');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorDot.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursorDot.classList.remove('active'));
+        });
+    }
 
     // ===== TYPED JS =====
     if (typeof Typed !== 'undefined') {
         new Typed('.typing-text', {
-            strings: ['Full-Stack Developer', 'Laravel & MERN Expert', 'API Designer', 'Problem Solver'],
+            strings: ['Backend Engineer', 'Laravel Expert', 'AWS Deployer', 'API Architect'],
             loop: true,
             typeSpeed: 60,
             backSpeed: 40,
-            backDelay: 1500
+            backDelay: 2000
         });
     }
 
-    // ===== SKILLS FETCH =====
-    fetch('http://localhost:3000/api/skills')
-        .then(res => res.json())
-        .then(data => {
-            const container = document.getElementById('skillsContainer');
-            if (container && data.length > 0) {
-                container.innerHTML = ''; // Clear fallback data if any
-                data.forEach(skill => {
-                    const bar = document.createElement('div');
-                    bar.className = 'skill-bar';
-                    bar.innerHTML = `
-                        <img src="${skill.icon}" alt="${skill.name}" loading="lazy" />
-                        <span>${skill.name}</span>
-                    `;
-                    container.appendChild(bar);
-                });
-            }
-        })
-        .catch(err => console.error("Error loading skills:", err));
-
-    // ===== PROJECT DATA FETCH & RENDER =====
-    let projectsData = [];
-    fetch('http://localhost:3000/api/projects')
-        .then(res => res.json())
-        .then(data => {
-            projectsData = data;
-            renderProjects();
-        })
-        .catch(err => {
-            console.error("Error loading projects from DB:", err);
-            // Fallback could be here if needed
+    // ===== PARTICLES JS =====
+    if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#3b82f6" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.3, "random": true },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#3b82f6",
+                    "opacity": 0.2,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+                    "push": { "particles_nb": 2 }
+                }
+            },
+            "retina_detect": true
         });
+    }
 
-    function renderProjects() {
-        const grid = document.getElementById('projectsGrid');
-        if (grid) {
-            grid.innerHTML = '';
-            projectsData.forEach((p, index) => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                
-                // techStack could be a comma separated string from DB
-                const techArray = p.techStack ? p.techStack.split(',').map(t => t.trim()) : [];
-                const techs = techArray.slice(0, 4).map(t => `<span>${t}</span>`).join('');
-                const extra = techArray.length > 4 ? `<span>+${techArray.length - 4}</span>` : '';
-                
-                // Add a dummy desc if not in DB yet (or we should add desc to DB schema later, for now we will use a placeholder if empty)
-                const desc = p.desc || 'Project details and description will be displayed here.';
+    // ===== INIT AOS ANIMATIONS =====
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out-cubic',
+            once: true,
+            offset: 50
+        });
+    }
 
-                card.innerHTML = `
-                    <span class="project-tag">${p.tag}</span>
-                    <h3>${p.title}</h3>
-                    <p>${desc.substring(0, 100)}${desc.length > 100 ? '...' : ''}</p>
-                    <div class="project-tech">${techs}${extra}</div>
-                    <span class="click-hint"><i class="fas fa-expand"></i> Details</span>
-                `;
-                card.addEventListener('click', () => openModal(index));
-                grid.appendChild(card);
-            });
+    // ===== STATIC PROJECTS DATA =====
+    const projectsData = [
+        {
+            title: "Toll Management System",
+            desc: "A scalable toll plaza management system engineered to handle high-throughput transactions. Features real-time dashboard analytics and automated reporting.",
+            techStack: ["Laravel", "MySQL", "AWS RDS", "Redis"],
+            live: "#",
+            github: "https://github.com/hariom903",
+            img: "https://images.unsplash.com/photo-1595846175056-5541e2bf75d2?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            title: "Survey Management System",
+            desc: "Dynamic survey generation and response collection platform. Engineered with a flexible schema to allow varied question types and complex analytics.",
+            techStack: ["PHP", "Laravel", "MySQL", "Chart.js"],
+            live: "#",
+            github: "https://github.com/hariom903",
+            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            title: "Garage Management SaaS",
+            desc: "Multi-tenant SaaS application for garage owners. Features include inventory tracking, billing, job cards, and SMS notifications.",
+            techStack: ["Laravel", "MySQL", "Stripe API", "Twilio"],
+            live: "#",
+            github: "https://github.com/hariom903",
+            img: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            title: "Attendance & Payroll System",
+            desc: "Enterprise HRMS module managing employee attendance via biometric APIs, leave approvals, and automated payroll calculations.",
+            techStack: ["Laravel", "REST APIs", "AWS EC2", "Cron Jobs"],
+            live: "#",
+            github: "https://github.com/hariom903",
+            img: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            title: "Payment Gateway Integration Service",
+            desc: "A microservice handling secure payment processing, webhook verifications, and subscription lifecycles using robust design patterns.",
+            techStack: ["Laravel", "Razorpay", "Redis", "Webhooks"],
+            live: "#",
+            github: "https://github.com/hariom903",
+            img: "https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=600&q=80"
+        },
+        {
+            title: "Inventory Management Platform",
+            desc: "High-performance inventory tracking system supporting barcode scanning, stock alerts, and multi-warehouse logistics.",
+            techStack: ["Laravel", "Vue.js", "MySQL", "AWS S3"],
+            live: "#",
+            github: "https://github.com/hariom903",
+            img: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600&q=80"
         }
-    }
+    ];
 
-    // ===== MODAL LOGIC =====
-    const modal = document.getElementById('projectModal');
-    const closeBtn = document.getElementById('modalClose');
-    
-    if(modal && closeBtn) {
-        window.openModal = function(index) {
-            const p = projectsData[index];
-            const techArray = p.techStack ? p.techStack.split(',').map(t => t.trim()) : [];
-            const desc = p.desc || 'Project details and description will be displayed here.';
-
-            document.getElementById('modalTag').textContent = p.tag;
-            document.getElementById('modalTitle').textContent = p.title;
-            document.getElementById('modalDesc').textContent = desc;
-            document.getElementById('modalTech').innerHTML = techArray.map(t => `<span>${t}</span>`).join('');
-            document.getElementById('modalLive').href = p.link || '#';
-            document.getElementById('modalCode').href = '#';
+    const projectsGrid = document.getElementById('projectsGrid');
+    if(projectsGrid) {
+        projectsData.forEach((p, i) => {
+            const delay = (i % 3) * 100;
+            const techBadges = p.techStack.map(t => `<span>${t}</span>`).join('');
             
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) closeModal();
+            const cardHtml = `
+                <div class="project-card glass-panel" data-aos="fade-up" data-aos-delay="${delay}">
+                    <img src="${p.img}" alt="${p.title}" class="project-img" loading="lazy" />
+                    <h3>${p.title}</h3>
+                    <p>${p.desc}</p>
+                    <div class="project-tech">
+                        ${techBadges}
+                    </div>
+                    <div class="project-actions">
+                        <a href="${p.live}" target="_blank" class="btn btn-primary" style="flex: 1; padding: 1rem;"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        <a href="${p.github}" target="_blank" class="btn btn-outline" style="flex: 1; padding: 1rem;"><i class="fab fa-github"></i> Code</a>
+                    </div>
+                </div>
+            `;
+            projectsGrid.innerHTML += cardHtml;
         });
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
     }
 
-    // ===== SCROLL REVEAL ANIMATIONS =====
-    if (typeof ScrollReveal !== 'undefined') {
-        const sr = ScrollReveal({
-            distance: '50px',
-            duration: 1000,
-            delay: 150,
-            reset: false
-        });
-
-        sr.reveal('.section-header h2', { origin: 'top' });
-        sr.reveal('.section-header .section-line', { origin: 'bottom', delay: 200 });
-        
-        sr.reveal('.home .content', { origin: 'left' });
-        sr.reveal('.home .image', { origin: 'right', delay: 300 });
-        
-        sr.reveal('.about .image', { origin: 'left' });
-        sr.reveal('.about .content', { origin: 'right' });
-        
-        sr.reveal('.skill-bar', { origin: 'bottom', interval: 100 });
-        
-        sr.reveal('.edu-box', { origin: 'bottom', interval: 200 });
-        sr.reveal('.project-card', { origin: 'bottom', interval: 200 });
-        
-        sr.reveal('.timeline-item', { origin: 'left', interval: 200 });
-        
-        sr.reveal('.contact-info', { origin: 'left' });
-        sr.reveal('.contact-form', { origin: 'right' });
-    }
 });
