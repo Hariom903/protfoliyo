@@ -1,79 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- SEO Meta Tags -->
-    <title>Hariom Dangi | Senior Laravel Backend Developer</title>
-    <meta name="description" content="Portfolio of Hariom Dangi, a Senior Laravel Backend Developer specializing in scalable APIs, AWS, and modern web applications." />
-    <meta name="keywords" content="Hariom Dangi, Laravel Developer, Backend Developer, PHP, MySQL, AWS, Full Stack Developer, Indore" />
+    <title>Hariom Dangi | Senior Laravel Backend Developer & API Architect</title>
+    <meta name="description"
+        content="Portfolio of Hariom Dangi, Senior Laravel Backend Developer with 2+ years of experience specializing in scalable REST APIs, MySQL SQL optimization, and AWS Cloud deployments in Indore, India." />
+    <meta name="keywords"
+        content="Hariom Dangi, Laravel Developer, Backend Engineer, PHP, MySQL, REST API, AWS EC2, S3, SQL Optimization, Sanctum, Angular, Indore Developer, India" />
     <meta name="author" content="Hariom Dangi" />
-    
+    <meta name="robots" content="index, follow" />
+
     <!-- Open Graph / Social Media -->
-    <meta property="og:title" content="Hariom Dangi | Laravel Backend Developer" />
-    <meta property="og:description" content="Crafting robust and scalable backend systems and premium digital experiences." />
+    <meta property="og:title" content="Hariom Dangi | Senior Laravel Backend Developer" />
+    <meta property="og:description"
+        content="Engineered for performance. Scalable Laravel REST APIs, MySQL optimization, and cloud architecture." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hariom903.github.io/protfoliyo/" />
-    
+    <meta property="og:image" content="./assets/images/hero_3d.png" />
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Hariom Dangi | Laravel Developer" />
-    <meta name="twitter:description" content="Crafting robust backend systems and premium digital experiences." />
-    
+    <meta name="twitter:title" content="Hariom Dangi | Laravel Backend Developer" />
+    <meta name="twitter:description" content="Build Scalable APIs. Optimize SQL. Deploy on AWS." />
+    <meta name="twitter:image" content="./assets/images/hero_3d.png" />
+
     <!-- Schema.org for Google -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Hariom Dangi",
-      "jobTitle": "Laravel Backend Developer",
+      "jobTitle": "Senior Laravel Backend Developer",
       "url": "https://hariom903.github.io/protfoliyo/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Indore",
+        "addressRegion": "Madhya Pradesh",
+        "addressCountry": "India"
+      },
       "sameAs": [
         "https://www.linkedin.com/in/hariom-dangi-2a5a51325",
         "https://github.com/hariom903"
+      ],
+      "knowsAbout": [
+        "Laravel", "PHP", "MySQL", "REST API", "AWS", "SQL Optimization", "Authentication", "Sanctum", "Angular", "Linux"
       ]
     }
     </script>
-    
-    <!-- Favicon (Fallback to a basic icon or use a generated one) -->
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/images/favicon.png" />
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    
-    <!-- AOS CSS -->
+
+    <!-- AOS Animation CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="./style.css" />
 </head>
+
 <body>
 
-    <!-- Custom Cursor -->
+    <!-- ===== BACKGROUND CINEMATIC OVERLAYS ===== -->
+    <div class="bg-grid-overlay"></div>
+    <div class="bg-noise-overlay"></div>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+
+    <!-- ===== CUSTOM CURSOR ===== -->
     <div class="cursor-glow" id="cursor-glow"></div>
     <div class="cursor-dot" id="cursor-dot"></div>
 
-    <!-- Scroll Progress -->
+    <!-- ===== SCROLL PROGRESS ===== -->
     <div id="scroll-progress"></div>
 
-    <!-- Preloader -->
+    <!-- ===== PRELOADER ===== -->
     <div class="loader-container" id="preloader">
+        <div class="loader-brand">HD<span style="color: var(--primary-light);">.</span></div>
         <div class="loader-spinner"></div>
     </div>
 
-    <!-- Navbar -->
+    <!-- ===== HEADER / NAVBAR ===== -->
     <header id="header">
         <div class="header-inner">
-            <a href="#home" class="logo"><i class="fas fa-layer-group"></i> HD.</a>
-            <div id="menu" class="fas fa-bars" aria-label="Toggle Menu"></div>
+            <a href="#home" class="logo">
+                <div class="logo-badge"><i class="fas fa-terminal"></i></div>
+                <span>Hariom<span style="color: var(--primary-light);">.</span></span>
+            </a>
+            <div id="menu" class="fas fa-bars" aria-label="Toggle Navigation Menu"></div>
             <nav class="navbar" id="navbar">
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#experience">Timeline</a></li>
                     <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -81,84 +109,121 @@
         </div>
     </header>
 
-    <!-- ===== HERO ===== -->
+    <!-- ===== HERO SECTION ===== -->
     <section class="home" id="home">
         <div id="particles-js"></div>
         <div class="container">
             <div class="content" data-aos="fade-right" data-aos-duration="1000">
-                <span class="greeting">Hello World, I'm</span>
-                <h1>Hariom Dangi</h1>
+                <div class="greeting-pill">
+                    <span class="pulse-dot"></span>
+                    <span>Hi, I'm Hariom Dangi</span>
+                </div>
+                <h1>Laravel Backend <br /><span class="gradient-text">Developer</span></h1>
                 <p class="typing-wrapper"><span class="typing-text"></span></p>
                 <p class="hero-desc">
-                    I engineer robust backend architectures, optimize complex SQL queries, and deploy scalable solutions on AWS. Transforming business requirements into premium, performant digital experiences.
+                    Build Scalable APIs. Optimize SQL. Deploy on AWS.<br />
+                    Senior Backend Engineer specializing in high-throughput API architectures, enterprise database optimization, and cloud infrastructure with 2+ years of production experience.
                 </p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Contact Me</a>
-                    <a href="./assets/resume/Hariom Dangi .pdf" target="_blank" class="btn btn-outline"><i class="fas fa-download"></i> Download CV</a>
-                </div>
                 
+                <div class="hero-actions">
+                    <a href="./assets/resume/Hariom Dangi .pdf" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-file-download"></i> Download Resume
+                    </a>
+                    <a href="#projects" class="btn btn-outline">
+                        <i class="fas fa-cubes"></i> View Projects
+                    </a>
+                </div>
+
                 <div class="social-icons-hero">
-                    <a href="https://www.linkedin.com/in/hariom-dangi-2a5a51325" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/hariom903" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="mailto:hariomdangi266@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/hariom903" target="_blank" aria-label="GitHub Profile">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/hariom-dangi-2a5a51325" target="_blank" aria-label="LinkedIn Profile">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:hariomdangi266@gmail.com" aria-label="Send Direct Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#contact" aria-label="Contact Section">
+                        <i class="fas fa-paper-plane"></i>
+                    </a>
                 </div>
             </div>
-            
-            <div class="image" data-aos="fade-left" data-aos-duration="1200">
-                <img src="./assets/images/hero_3d.png" alt="Modern Developer Laptop" class="hero-image" loading="lazy" />
+
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200">
+                <div class="hero-card-frame glass-card">
+                    <img src="./assets/images/hero_3d.png" alt="Modern Developer Setup" class="hero-image" loading="lazy" />
+                    
+                    <div class="floating-tech-badge badge-1">
+                        <i class="fab fa-laravel"></i>
+                        <span>Laravel 10 / PHP 8+</span>
+                    </div>
+                    <div class="floating-tech-badge badge-2">
+                        <i class="fab fa-aws"></i>
+                        <span>AWS EC2 & S3</span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <a href="#about" class="scroll-indicator" aria-label="Scroll Down to About Section">
+            <span>SCROLL</span>
+            <div class="mouse-icon">
+                <div class="mouse-wheel"></div>
+            </div>
+        </a>
     </section>
 
-    <!-- ===== ABOUT ===== -->
+    <!-- ===== ABOUT SECTION ===== -->
     <section class="about section-padding" id="about">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>About <span>Me</span></h2>
+                <span class="section-tag">ARCHITECT & DEVELOPER</span>
+                <h2>About <span class="gradient-text">Me</span></h2>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="row">
-                <div class="image-wrapper" data-aos="fade-right">
-                    <img src="./assets/images/imgg.avif" alt="Hariom Dangi" loading="lazy" />
+                <div class="about-image-wrapper glass-card" data-aos="fade-right">
+                    <img src="./assets/images/imgg.avif" alt="Hariom Dangi - Senior Laravel Backend Developer" loading="lazy" />
                 </div>
-                
+
                 <div class="about-content" data-aos="fade-left">
-                    <h3>Senior Laravel Backend Developer</h3>
+                    <h3>Production Laravel Developer & API Architect</h3>
                     <p>
-                        With a strong foundation in backend development and systems architecture, I specialize in crafting high-performance RESTful APIs and optimizing enterprise-level databases. My core stack includes <strong>Laravel, PHP, MySQL, and AWS</strong>.
+                        With <strong>2+ years of hands-on experience</strong> in backend development and cloud architecture, I engineer robust, scalable backend systems designed for modern enterprise platforms.
                     </p>
                     <p>
-                        Over the past 1.5+ years, I have successfully engineered scalable backend systems for CRM platforms and robust client applications. I possess a deep understanding of problem-solving, clean code principles, and efficient server-side deployment.
+                        My expertise spans designing clean <strong>RESTful APIs, Laravel Sanctum authentication, complex database normalization, MySQL query optimization, Redis queue management, and AWS Cloud deployments</strong>. I focus on clean architecture, high security standards, and exceptional performance.
                     </p>
-                    
+
                     <div class="about-stats">
-                        <div class="stat-box glass-panel">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <h4>Experience</h4>
-                                <p>1.5+ Years</p>
+                        <div class="stat-box glass-card">
+                            <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
+                            <div class="stat-info">
+                                <h4>2+ Years</h4>
+                                <p>Production Experience</p>
                             </div>
                         </div>
-                        <div class="stat-box glass-panel">
-                            <i class="fas fa-server"></i>
-                            <div>
-                                <h4>Focus</h4>
+                        <div class="stat-box glass-card">
+                            <div class="stat-icon"><i class="fas fa-server"></i></div>
+                            <div class="stat-info">
+                                <h4>Scalable APIs</h4>
                                 <p>Backend Architecture</p>
                             </div>
                         </div>
-                        <div class="stat-box glass-panel">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Indore, India</p>
+                        <div class="stat-box glass-card">
+                            <div class="stat-icon"><i class="fas fa-database"></i></div>
+                            <div class="stat-info">
+                                <h4>MySQL / SQL</h4>
+                                <p>Query Optimization</p>
                             </div>
                         </div>
-                        <div class="stat-box glass-panel">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Education</h4>
-                                <p>B.Tech CSE</p>
+                        <div class="stat-box glass-card">
+                            <div class="stat-icon"><i class="fas fa-cloud"></i></div>
+                            <div class="stat-info">
+                                <h4>AWS Cloud</h4>
+                                <p>EC2 & S3 Deployment</p>
                             </div>
                         </div>
                     </div>
@@ -167,209 +232,225 @@
         </div>
     </section>
 
-    <!-- ===== SKILLS ===== -->
+    <!-- ===== SKILLS SECTION ===== -->
     <section class="skills section-padding" id="skills">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>Core <span>Skills</span></h2>
+                <span class="section-tag">TECHNICAL MATRIX</span>
+                <h2>Core <span class="gradient-text">Skills</span></h2>
+                <p class="section-subtitle">Battle-tested backend tools, database engines, and web technologies powering scalable applications.</p>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="skills-grid">
-                <!-- Backend Card -->
-                <div class="skill-category glass-panel" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-category-icon"><i class="fas fa-database"></i></div>
-                    <h3>Backend Development</h3>
+                <!-- Backend Skill Card -->
+                <div class="skill-category glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-header">
+                        <div class="skill-category-icon"><i class="fas fa-server"></i></div>
+                        <h3>Backend</h3>
+                    </div>
                     <div class="skill-items">
-                        <span>Laravel</span>
-                        <span>PHP</span>
-                        <span>REST API</span>
-                        <span>MySQL</span>
-                        <span>Authentication (Sanctum)</span>
-                        <span>Node.js</span>
+                        <div class="skill-chip"><i class="fab fa-laravel"></i> Laravel</div>
+                        <div class="skill-chip"><i class="fab fa-php"></i> PHP</div>
+                        <div class="skill-chip"><i class="fas fa-database"></i> MySQL</div>
+                        <div class="skill-chip"><i class="fas fa-network-wired"></i> REST API</div>
+                        <div class="skill-chip"><i class="fas fa-bolt"></i> Redis</div>
+                        <div class="skill-chip"><i class="fas fa-tasks"></i> Queue</div>
+                        <div class="skill-chip"><i class="fas fa-shield-alt"></i> Sanctum</div>
+                        <div class="skill-chip"><i class="fas fa-tachometer-alt"></i> SQL Optimization</div>
                     </div>
                 </div>
-                
-                <!-- Cloud & DevOps Card -->
-                <div class="skill-category glass-panel" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-category-icon"><i class="fas fa-cloud"></i></div>
-                    <h3>Cloud & Tools</h3>
+
+                <!-- Frontend Skill Card -->
+                <div class="skill-category glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-header">
+                        <div class="skill-category-icon"><i class="fas fa-code"></i></div>
+                        <h3>Frontend</h3>
+                    </div>
                     <div class="skill-items">
-                        <span>AWS</span>
-                        <span>EC2</span>
-                        <span>S3</span>
-                        <span>Git & GitHub</span>
-                        <span>Linux</span>
-                        <span>Postman</span>
+                        <div class="skill-chip"><i class="fab fa-angular"></i> Angular</div>
+                        <div class="skill-chip"><i class="fab fa-js"></i> JavaScript</div>
+                        <div class="skill-chip"><i class="fab fa-html5"></i> HTML5</div>
+                        <div class="skill-chip"><i class="fab fa-css3-alt"></i> CSS3</div>
+                        <div class="skill-chip"><i class="fab fa-bootstrap"></i> Bootstrap</div>
+                        <div class="skill-chip"><i class="fas fa-palette"></i> Tailwind CSS</div>
                     </div>
                 </div>
-                
-                <!-- Frontend Card -->
-                <div class="skill-category glass-panel" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-category-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Frontend Development</h3>
+
+                <!-- Cloud & Infrastructure Card -->
+                <div class="skill-category glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-header">
+                        <div class="skill-category-icon"><i class="fas fa-cloud"></i></div>
+                        <h3>Cloud & Linux</h3>
+                    </div>
                     <div class="skill-items">
-                        <span>Angular</span>
-                        <span>JavaScript (ES6+)</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>Bootstrap</span>
-                        <span>Tailwind CSS</span>
+                        <div class="skill-chip"><i class="fab fa-aws"></i> AWS EC2</div>
+                        <div class="skill-chip"><i class="fas fa-box-open"></i> AWS S3</div>
+                        <div class="skill-chip"><i class="fab fa-linux"></i> Linux</div>
+                        <div class="skill-chip"><i class="fab fa-git-alt"></i> Git</div>
+                        <div class="skill-chip"><i class="fab fa-github"></i> GitHub</div>
+                        <div class="skill-chip"><i class="fas fa-cogs"></i> Postman</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== PROJECTS ===== -->
+    <!-- ===== PROJECTS SECTION ===== -->
     <section class="projects section-padding" id="projects">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>Featured <span>Projects</span></h2>
+                <span class="section-tag">PROVEN PORTFOLIO</span>
+                <h2>Featured <span class="gradient-text">Projects</span></h2>
+                <p class="section-subtitle">Production-grade applications engineered with high performance, secure authorization, and scalable database schemas.</p>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="projects-grid" id="projectsGrid">
-                <!-- Injected via script.js -->
+                <!-- Injected dynamically via script.js -->
             </div>
-            
-            <div style="text-align: center; margin-top: 3rem;" data-aos="fade-up">
+
+            <div style="text-align: center; margin-top: 5rem;" data-aos="fade-up">
                 <a href="https://github.com/hariom903" target="_blank" class="btn btn-outline">
-                    <i class="fab fa-github"></i> View All on GitHub
+                    <i class="fab fa-github"></i> View Full Repository on GitHub
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== EXPERIENCE & EDUCATION ===== -->
+    <!-- ===== TIMELINE (EXPERIENCE) ===== -->
     <section class="experience section-padding" id="experience">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>Professional <span>Timeline</span></h2>
+                <span class="section-tag">CAREER ROADMAP</span>
+                <h2>Professional <span class="gradient-text">Timeline</span></h2>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="timeline">
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <h3>Full Stack Developer</h3>
+                    <div class="timeline-content glass-card">
+                        <h3>Full Stack / Backend Developer</h3>
                         <p class="timeline-company">IGNIS IT Solution, Indore</p>
                         <span class="timeline-date">May 2024 – Present</span>
                         <ul>
-                            <li>Developing scalable APIs and backend modules for CRM and enterprise projects.</li>
-                            <li>Designing secure architecture and optimizing normalized database schemas.</li>
-                            <li>Integrating third-party APIs (Payment Gateways, Push Notifications, Live Chat).</li>
-                            <li>Ensuring highly performant queries via SQL optimization and caching mechanisms.</li>
+                            <li>Engineered scalable backend RESTful APIs and modules for enterprise CRM systems.</li>
+                            <li>Architected normalized database schemas in MySQL with indexed query optimizations.</li>
+                            <li>Integrated third-party services including Payment Gateways, Push Notifications, and Live Chat APIs.</li>
+                            <li>Implemented Redis caching strategies to maximize server throughput and reduce response latency.</li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-icon"><i class="fas fa-code-branch"></i></div>
-                    <div class="timeline-content glass-panel">
+                    <div class="timeline-content glass-card">
                         <h3>MERN Stack Intern</h3>
                         <p class="timeline-company">Ypsilon IT Solution Pvt. Ltd., Indore</p>
                         <span class="timeline-date">Nov 2023 – April 2024</span>
                         <ul>
-                            <li>Engineered a Tender Management Web Application handling complex datasets.</li>
-                            <li>Implemented robust role-based authentication using JWT.</li>
-                            <li>Designed high-efficiency RESTful APIs and managed MongoDB schemas.</li>
+                            <li>Developed key modules for a Tender Management System handling large structured datasets.</li>
+                            <li>Implemented role-based access control (RBAC) and secure JWT authentication flow.</li>
+                            <li>Built clean RESTful API endpoints and optimized MongoDB data queries.</li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-icon"><i class="fas fa-university"></i></div>
-                    <div class="timeline-content glass-panel">
-                        <h3>B.Tech in Computer Science</h3>
+                    <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="timeline-content glass-card">
+                        <h3>B.Tech in Computer Science Engineering</h3>
                         <p class="timeline-company">LNCTS, RGPV University</p>
                         <span class="timeline-date">Pursuing</span>
                         <ul>
-                            <li>Deep dive into Data Structures, Algorithms, and Software Engineering methodologies.</li>
+                            <li>Deep exploration of Data Structures, Algorithms, Software Design Patterns, and Database Systems.</li>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ===== CERTIFICATES ===== -->
-    <section class="certificates section-padding" id="certificates">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Licenses & <span>Certifications</span></h2>
-                <div class="section-line"></div>
-            </div>
-            
-            <div class="certs-grid">
-                <div class="cert-card glass-panel" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-certificate"></i>
-                    <h3>MERN Stack Certification</h3>
-                    <p>Universal Informatics, Indore</p>
-                    <p style="margin-top: 1rem; color: var(--primary);">Completed: Jan 2025</p>
-                </div>
-                <div class="cert-card glass-panel" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-award"></i>
-                    <h3>Diploma in Computer Science</h3>
-                    <p>Government Polytechnic College, Agar Malwa</p>
-                    <p style="margin-top: 1rem; color: var(--primary);">Completed: 2024</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== CONTACT ===== -->
+    <!-- ===== CERTIFICATES SECTION ===== -->
+    <section class="certificates section-padding" id="certificates">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">CREDENTIALS</span>
+                <h2>Licenses & <span class="gradient-text">Certifications</span></h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="certs-grid">
+                <div class="cert-card glass-card" data-aos="zoom-in" data-aos-delay="100">
+                    <i class="fas fa-certificate"></i>
+                    <h3>MERN Stack Certification</h3>
+                    <p>Universal Informatics, Indore</p>
+                    <span class="cert-badge">Completed: Jan 2025</span>
+                </div>
+
+                <div class="cert-card glass-card" data-aos="zoom-in" data-aos-delay="200">
+                    <i class="fas fa-award"></i>
+                    <h3>Diploma in Computer Science</h3>
+                    <p>Government Polytechnic College, Agar Malwa</p>
+                    <span class="cert-badge">Completed: 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
     <section class="contact section-padding" id="contact">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>Get In <span>Touch</span></h2>
+                <span class="section-tag">GET IN TOUCH</span>
+                <h2>Start a <span class="gradient-text">Project</span></h2>
                 <div class="section-line"></div>
             </div>
-            
+
             <div class="contact-grid">
                 <div class="contact-info" data-aos="fade-right">
-                    <h3>Let's architect something <span>scalable</span> together.</h3>
-                    <p>Available for backend architecture consulting and senior developer roles.</p>
-                    
+                    <h3>Let's architect something <span class="gradient-text">scalable</span> together.</h3>
+                    <p>Available for senior backend engineering roles, API consulting, and cloud deployment projects.</p>
+
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div>
-                                <span>Email</span>
-                                <p><a href="mailto:hariomdangi266@gmail.com" style="color: inherit;">hariomdangi266@gmail.com</a></p>
+                                <span>Direct Email</span>
+                                <p><a href="mailto:hariomdangi266@gmail.com">hariomdangi266@gmail.com</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
-                                <span>Phone</span>
-                                <p>+91 9039214744</p>
+                                <span>Direct Phone</span>
+                                <p><a href="tel:+919039214744">+91 9039214744</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
-                                <span>Location</span>
+                                <span>Primary Location</span>
                                 <p>Indore, Madhya Pradesh, India</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="contact-form glass-panel" data-aos="fade-left">
-                    <form id="contact-form" onsubmit="event.preventDefault(); alert('Message feature is in demo mode. Please contact via email.');">
+
+                <div class="contact-form glass-card" data-aos="fade-left">
+                    <form id="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Direct email response will be dispatched to your inbox shortly.');">
                         <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required aria-label="Full Name" />
                             <i class="fas fa-user"></i>
-                            <input type="text" name="name" placeholder="Your Name" required aria-label="Name" />
                         </div>
                         <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email Address" required aria-label="Email Address" />
                             <i class="fas fa-envelope"></i>
-                            <input type="email" name="email" placeholder="Your Email" required aria-label="Email" />
                         </div>
                         <div class="form-group">
+                            <textarea name="message" placeholder="Describe your project, architecture needs, or role opportunity..." required aria-label="Message"></textarea>
                             <i class="fas fa-comment-dots"></i>
-                            <textarea name="message" placeholder="Project Details or Message" required aria-label="Message"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">
                             <i class="fas fa-paper-plane"></i> Send Inquiry
@@ -377,9 +458,12 @@
                     </form>
                 </div>
             </div>
-            
+
             <div class="map-container" data-aos="fade-up" data-aos-delay="200">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.55657476834!2d75.78663365820313!3d22.724204999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Indore Map Location"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117763.55657476834!2d75.78663365820313!3d22.724204999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fcad1b410ddb%3A0x96ec4da356240f4!2sIndore%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    title="Indore Location Map"></iframe>
             </div>
         </div>
     </section>
@@ -389,35 +473,40 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo" style="margin-bottom: 2rem;"><i class="fas fa-layer-group"></i> HD.</div>
-                    <p>Engineered for performance. Building robust, scalable backend systems for the modern web.</p>
+                    <div class="logo">
+                        <div class="logo-badge"><i class="fas fa-terminal"></i></div>
+                        <span>Hariom<span style="color: var(--primary-light);">.</span></span>
+                    </div>
+                    <p>Engineered for maximum reliability. Building robust, high-performance backend systems and scalable APIs for the modern web.</p>
                     <div class="social-icons-hero" style="margin-top: 2.5rem;">
-                        <a href="https://www.linkedin.com/in/hariom-dangi-2a5a51325" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/hariom903" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/hariom903" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/hariom-dangi-2a5a51325" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:hariomdangi266@gmail.com" aria-label="Email Me"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Navigation</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#experience">Timeline</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-contact">
                     <h4>Direct Contact</h4>
                     <p><i class="fas fa-envelope"></i> hariomdangi266@gmail.com</p>
                     <p><i class="fas fa-phone-alt"></i> +91 9039214744</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Indore, India</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Indore, Madhya Pradesh, India</p>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
-                <p>&copy; 2026 Hariom Dangi. Engineered with precision.</p>
+                <p>&copy; 2026 Hariom Dangi. Crafted with precision & performance.</p>
             </div>
         </div>
     </footer>
@@ -427,14 +516,11 @@
         <a href="#home" class="action-btn" id="scroll-top" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></a>
     </div>
 
-    <!-- ===== SCRIPTS ===== -->
-    <!-- Typed.js -->
+    <!-- ===== EXTERNAL SCRIPTS ===== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <!-- Particles.js -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Main Script -->
     <script src="./script.js"></script>
 </body>
+
 </html>

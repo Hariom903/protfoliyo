@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hariom903.github.io/protfoliyo/sitemap.xml
